@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="client.controllers.RegisterController"
+      alignment="CENTER" spacing="20"
+      style="-fx-background-color: #1F4E79; -fx-padding: 40;">
+
+    <Label text="💬 Messagerie G1"
+           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+
+    <VBox spacing="10" maxWidth="350"
+          style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10;">
+
+        <Label text="Créer un compte"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1F4E79;"/>
+
+        <Label text="Nom d'utilisateur" style="-fx-font-size: 13px;"/>
+        <TextField fx:id="usernameField" promptText="Choisissez un username"/>
+
+        <Label text="Mot de passe" style="-fx-font-size: 13px;"/>
+        <PasswordField fx:id="passwordField" promptText="Choisissez un mot de passe"/>
+
+        <Label text="Confirmer le mot de passe" style="-fx-font-size: 13px;"/>
+        <PasswordField fx:id="confirmField" promptText="Confirmez le mot de passe"/>
+
+        <Label fx:id="errorLabel" style="-fx-text-fill: red; -fx-font-size: 12px;" wrapText="true"/>
+        <Label fx:id="successLabel" style="-fx-text-fill: green; -fx-font-size: 12px;" wrapText="true"/>
+
+        <Button fx:id="registerButton" text="S'inscrire"
+                onAction="#handleRegister"
+                maxWidth="Infinity"
+                style="-fx-background-color: #2E75B6; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 5; -fx-cursor: hand;"/>
+
+        <Separator/>
+
+        <Button text="Déjà un compte ? Se connecter"
+                onAction="#goToLogin"
+                maxWidth="Infinity"
+                style="-fx-background-color: transparent; -fx-text-fill: #2E75B6; -fx-font-size: 13px; -fx-cursor: hand;"/>
+    </VBox>
+</VBox>
