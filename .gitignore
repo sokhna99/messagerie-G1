@@ -1,0 +1,14 @@
+# Fichiers compilés
+target/
+*.class
+
+# IDE (IntelliJ, Eclipse, etc.)
+.idea/
+*.iml
+.vscode/
+
+# Config Hibernate avec mots de passe réels
+src/main/resources/hibernate.cfg.xml
+
+# Logs
+*.log
