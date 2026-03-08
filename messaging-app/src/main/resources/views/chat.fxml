@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="client.controllers.ChatController"
+            style="-fx-background-color: #F0F2F5;"
+            prefWidth="900" prefHeight="600">
+
+    <!-- ── BARRE DU HAUT ── -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15"
+              style="-fx-background-color: #1F4E79; -fx-padding: 12 20;">
+            <Label text="💬 Messagerie G1"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Label fx:id="currentUserLabel"
+                   style="-fx-text-fill: #D6E4F0; -fx-font-size: 14px;"/>
+            <Button text="Déconnexion" onAction="#handleLogout"
+                    style="-fx-background-color: #E74C3C; -fx-text-fill: white; -fx-cursor: hand; -fx-background-radius: 5;"/>
+        </HBox>
+    </top>
+
+    <!-- ── CENTRE : liste utilisateurs + conversation ── -->
+    <center>
+        <SplitPane dividerPositions="0.28">
+
+            <!-- Liste des utilisateurs -->
+            <VBox style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-width: 0 1 0 0;">
+                <Label text="Utilisateurs connectés"
+                       style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10; -fx-text-fill: #555;"/>
+                <Separator/>
+                <ListView fx:id="usersList" VBox.vgrow="ALWAYS"
+                          onMouseClicked="#handleUserSelected"
+                          style="-fx-background-color: transparent;"/>
+            </VBox>
+
+            <!-- Zone de conversation -->
+            <VBox spacing="0">
+                <!-- En-tête conversation -->
+                <HBox alignment="CENTER_LEFT" spacing="10"
+                      style="-fx-background-color: #2E75B6; -fx-padding: 10 15;">
+                    <Label fx:id="chatWithLabel"
+                           text="Sélectionnez un utilisateur"
+                           style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                </HBox>
+
+                <!-- Messages -->
+                <ScrollPane fx:id="scrollPane" VBox.vgrow="ALWAYS"
+                            fitToWidth="true"
+                            style="-fx-background-color: #F0F2F5; -fx-background: #F0F2F5;">
+                    <VBox fx:id="messagesBox" spacing="8"
+                          style="-fx-padding: 15; -fx-background-color: #F0F2F5;"
+                          fillWidth="true"/>
+                </ScrollPane>
+
+                <!-- Zone de saisie -->
+                <HBox spacing="10"
+                      style="-fx-padding: 10; -fx-background-color: white; -fx-border-color: #ddd; -fx-border-width: 1 0 0 0;">
+                    <TextField fx:id="messageInput"
+                               HBox.hgrow="ALWAYS"
+                               promptText="Tapez votre message... (max 1000 caractères)"
+                               onAction="#handleSend"
+                               style="-fx-background-radius: 20; -fx-padding: 8 15;"/>
+                    <Button fx:id="sendButton" text="Envoyer"
+                            onAction="#handleSend"
+                            style="-fx-background-color: #2E75B6; -fx-text-fill: white; -fx-background-radius: 20; -fx-cursor: hand; -fx-padding: 8 18;"/>
+                </HBox>
+
+                <!-- Indicateur d'erreur RG10 -->
+                <Label fx:id="statusBar" text=""
+                       style="-fx-padding: 4 10; -fx-font-size: 11px; -fx-text-fill: red; -fx-background-color: #FDECEA;"/>
+            </VBox>
+        </SplitPane>
+    </center>
+
+</BorderPane>
